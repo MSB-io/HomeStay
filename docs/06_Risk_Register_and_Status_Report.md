@@ -14,12 +14,12 @@
 
 ```mermaid
 graph LR
-    PV["Planned Value (PV)<br/>₹6.00 Lakh (50%)"] 
-    AC["Actual Cost (AC)<br/>₹5.20 Lakh"]
-    EV["Earned Value (EV)<br/>₹5.04 Lakh (42%)"]
+    PV["Planned Value (PV): Rs 6.00 Lakh (50%)"] 
+    AC["Actual Cost (AC): Rs 5.20 Lakh"]
+    EV["Earned Value (EV): Rs 5.04 Lakh (42%)"]
 
-    EV --- CV["Cost Variance (CV)<br/>-₹0.16 Lakh (-₹16,000)<br/><i>Over Budget for Work Done</i>"]
-    EV --- SV["Schedule Variance (SV)<br/>-₹0.96 Lakh (-₹96,000)<br/><i>16% Behind Schedule</i>"]
+    EV --> CV["Cost Variance (CV): -Rs 0.16 Lakh (-Rs 16,000)<br/>Over Budget for Work Done"]
+    EV --> SV["Schedule Variance (SV): -Rs 0.96 Lakh (-Rs 96,000)<br/>16% Behind Schedule"]
 
     style PV fill:#e6f2ff,stroke:#0066cc,stroke-width:2px
     style AC fill:#fff0f5,stroke:#cc0066,stroke-width:2px

@@ -77,18 +77,18 @@ $$\mathbf{D_d = 64 \text{ working days}}$$
 
 ```mermaid
 graph TD
-    subgraph Serial Model: INFEASIBLE 21.5 Weeks
-        DevSerial[Development: 64 Days / 12.8 Wks] --> OnboardSerial[Onboarding: 44 Days / 8.7 Wks]
-        OnboardSerial --> TotalSerial[Total = 108 Days / 21.5 Weeks > 16.0 Week Deadline]
+    subgraph SerialModel ["Serial Model: Infeasible 21.5 Weeks"]
+        DevSerial["Development: 64 Days (12.8 Weeks)"] --> OnboardSerial["Onboarding: 44 Days (8.7 Weeks)"]
+        OnboardSerial --> TotalSerial["Total: 108 Days (21.5 Weeks) - Exceeds 16-Week Limit"]
     end
 
-    subgraph Staged Concurrency Model: FEASIBLE 15.6 Weeks
-        DevCore[Weeks 1-4: Core Architecture & Field Listing Tool] --> FieldStart[Week 5: Field Staff Begin Onboarding with Tool]
-        DevCore --> DevRest[Weeks 5-13: Calendar, Payments, Dashboard, PWA]
-        FieldStart --> FieldEnd[Weeks 5-13.5: 260 Homestays Completed in Batches]
-        DevRest --> UAT[Weeks 14-15: Integrated UAT & Testing]
+    subgraph StagedModel ["Staged Concurrency Model: Feasible 15.6 Weeks"]
+        DevCore["Weeks 1-4: Core Architecture and Field Listing Tool"] --> FieldStart["Week 5: Field Staff Begin Onboarding with Tool"]
+        DevCore --> DevRest["Weeks 5-13: Calendar, Payments, Dashboard, PWA"]
+        FieldStart --> FieldEnd["Weeks 5-13.5: 260 Homestays Completed in Batches"]
+        DevRest --> UAT["Weeks 14-15: Integrated UAT and Testing"]
         FieldEnd --> UAT
-        UAT --> Launch[Week 16: Go-Live Before Summer]
+        UAT --> Launch["Week 16: Go-Live Before Summer"]
     end
 ```
 
@@ -153,12 +153,12 @@ In professional software engineering, confusing an **estimate** with a **promise
 
 ```mermaid
 graph LR
-    Estimate[1. ESTIMATE: Probabilistic Forecast<br/><i>'What is mathematically probable given assumptions'</i>]
-    Target[2. TARGET: Business Goal<br/><i>'Live in 16 weeks before summer season'</i>]
-    Commitment[3. COMMITMENT / PROMISE: Binding Contract<br/><i>'Guaranteeing exact scope, cost & date'</i>]
+    Estimate["1. Estimate: Probabilistic Forecast<br/>(What is mathematically probable given assumptions)"]
+    Target["2. Target: Business Goal<br/>(Live in 16 weeks before summer season)"]
+    Commitment["3. Commitment: Binding Contract<br/>(Guaranteeing exact scope, cost and date)"]
 
-    Estimate -.->|Variance & Risk Management| Target
-    Target -.->|Requires Trade-off Scope vs Time| Commitment
+    Estimate -.->|"Variance and Risk Management"| Target
+    Target -.->|"Requires Scope vs Time Trade-off"| Commitment
 ```
 
 ### 6.1 The Cone of Uncertainty (Steve McConnell / Barry Boehm)

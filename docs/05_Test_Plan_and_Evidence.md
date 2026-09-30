@@ -11,11 +11,11 @@ The testing strategy is engineered to ensure zero transaction failures, zero dou
 
 ```mermaid
 graph TD
-    subgraph Testing Pyramid
-        Unit[Unit Tests: BVA & Domain Logic<br/><i>Jest & Mocha - Target: 85% Code Coverage</i>]
-        Integration[Integration Tests: Payment Gateways & Redis Locks<br/><i>Supertest & Mock Webhooks</i>]
-        System[System & Concurrency Tests: 150 Virtual Users<br/><i>k6 & Throttled Network Emulation</i>]
-        UAT[User Acceptance Testing: Field Trials in 3 Hill Villages<br/><i>Homestay Owners & Association Reps</i>]
+    subgraph TestingPyramid ["Testing Pyramid Hierarchy"]
+        Unit["Unit Tests: BVA and Domain Logic<br/>(Target: 85% Code Coverage)"]
+        Integration["Integration Tests: Payment Gateways and Redis Locks"]
+        System["System and Concurrency Tests: 150 Virtual Users"]
+        UAT["User Acceptance Testing: Field Trials in Hill Villages"]
     end
 
     Unit --> Integration

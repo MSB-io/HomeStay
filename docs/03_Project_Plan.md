@@ -90,27 +90,27 @@ graph TD
 
 ```mermaid
 graph LR
-    A["A: Req Elicitation<br/>[0, 5]"] -->|Critical| B["B: SRS Spec<br/>[5, 10]"]
-    B -->|Critical| C["C: DB & Lock Schema<br/>[10, 18]"]
+    A["A: Req Elicitation (0 to 5)"] -->|Critical| B["B: SRS Spec (5 to 10)"]
+    B -->|Critical| C["C: DB and Lock Schema (10 to 18)"]
     
-    C -->|Critical| D["D: Field Tool Build<br/>[18, 24]"]
-    C -->|Float=2| E["E: Calendar Engine<br/>[18, 30]"]
+    C -->|Critical| D["D: Field Tool Build (18 to 24)"]
+    C -->|Float 2| E["E: Calendar Engine (18 to 30)"]
     
-    D -->|Critical| F["F: Onboard Batch 1<br/>[24, 39]"]
-    D -->|Float=4| H["H: Owner PWA<br/>[24, 38]"]
-    E -->|Float=2| G["G: Payment Gateway<br/>[30, 40]"]
+    D -->|Critical| F["F: Onboard Batch 1 (24 to 39)"]
+    D -->|Float 4| H["H: Owner PWA (24 to 38)"]
+    E -->|Float 2| G["G: Payment Gateway (30 to 40)"]
     
-    F -->|Critical| I["I: Onboard Batch 2<br/>[39, 54]"]
-    G --> J["J: Association Dash<br/>[40, 48]"]
+    F -->|Critical| I["I: Onboard Batch 2 (39 to 54)"]
+    G --> J["J: Association Dash (40 to 48)"]
     H --> J
     
-    I -->|Critical| K["K: Onboard Batch 3<br/>[54, 68]"]
-    J -->|Float=12| L["L: System Testing<br/>[48, 56]"]
+    I -->|Critical| K["K: Onboard Batch 3 (54 to 68)"]
+    J -->|Float 12| L["L: System Testing (48 to 56)"]
     
-    K -->|Critical| M["M: Field UAT<br/>[68, 74]"]
+    K -->|Critical| M["M: Field UAT (68 to 74)"]
     L --> M
     
-    M -->|Critical| N["N: Pre-Season Go-Live<br/>[74, 78]"]
+    M -->|Critical| N["N: Pre-Season Go-Live (74 to 78)"]
 
     style A fill:#ffcccc,stroke:#cc0000,stroke-width:2px
     style B fill:#ffcccc,stroke:#cc0000,stroke-width:2px
@@ -137,32 +137,32 @@ gantt
     title HomeStay 16-Week Master Project Schedule (Uttarakhand)
     excludes    weekends
 
-    section Phase 1: Requirements & SRS
-    Req Elicitation & Field Surveys (A)       :done,    actA, 2026-10-01, 5d
-    IEEE 830 SRS & MoSCoW Baseline (B)         :done,    actB, after actA, 5d
-    Milestone M1: SRS Approved                 :milestone, m1, after actB, 0d
+    section Phase 1 Requirements and SRS
+    Req Elicitation and Field Surveys A       :done, actA, 2026-10-01, 5d
+    IEEE 830 SRS and MoSCoW Baseline B        :done, actB, after actA, 5d
+    Milestone M1 SRS Approved                 :milestone, m1, after actB, 1d
 
-    section Phase 2: Software Development
-    DB Schema & Redis Lock Engine (C)          :active,  actC, after actB, 8d
-    Field Onboarding Tool Build (D)            :active,  actD, after actC, 6d
-    Milestone M2: Field Tool Ready             :milestone, m2, after actD, 0d
-    Calendar Engine & Concurrency Lock (E)     :         actE, after actC, 12d
-    Payment Gateway & Webhook Escrow (G)       :         actG, after actE, 10d
-    Low-Bandwidth Owner Offline PWA (H)        :         actH, after actD, 14d
-    Association Analytics Dashboard (J)        :         actJ, after actG, 8d
-    Integration & End-to-End Testing (L)       :         actL, after actJ, 8d
-    Milestone M3: Code Freeze                  :milestone, m3, after actL, 0d
+    section Phase 2 Software Development
+    DB Schema and Redis Lock Engine C         :active, actC, after actB, 8d
+    Field Onboarding Tool Build D             :active, actD, after actC, 6d
+    Milestone M2 Field Tool Ready             :milestone, m2, after actD, 1d
+    Calendar Engine and Concurrency Lock E    :crit, actE, after actC, 12d
+    Payment Gateway and Webhook Escrow G      :actG, after actE, 10d
+    Low-Bandwidth Owner Offline PWA H         :actH, after actD, 14d
+    Association Analytics Dashboard J         :actJ, after actG, 8d
+    Integration and End-to-End Testing L      :actL, after actJ, 8d
+    Milestone M3 Code Freeze                  :milestone, m3, after actL, 1d
 
-    section Phase 3: Field Onboarding (260 Homestays)
-    Onboarding Batch 1: 90 Homestays (F)       :         actF, after actD, 15d
-    Onboarding Batch 2: 90 Homestays (I)       :         actI, after actF, 15d
-    Onboarding Batch 3: 80 Homestays (K)       :         actK, after actI, 14d
-    Milestone M4: 100% Homestays Onboarded     :milestone, m4, after actK, 0d
+    section Phase 3 Field Onboarding 260 Homestays
+    Onboarding Batch 1 with 90 Homestays F    :crit, actF, after actD, 15d
+    Onboarding Batch 2 with 90 Homestays I    :crit, actI, after actF, 15d
+    Onboarding Batch 3 with 80 Homestays K    :crit, actK, after actI, 14d
+    Milestone M4 All Homestays Onboarded      :milestone, m4, after actK, 1d
 
-    section Phase 4: UAT & Go-Live
-    On-Site Field UAT in Hill Villages (M)     :         actM, after actK, 6d
-    Production Deployment & Public Launch (N)  :         actN, after actM, 4d
-    Milestone M5: Pre-Summer Public Go-Live    :milestone, m5, after actN, 0d
+    section Phase 4 UAT and Go-Live
+    On-Site Field UAT in Hill Villages M      :crit, actM, after actK, 6d
+    Production Deployment and Launch N        :crit, actN, after actM, 4d
+    Milestone M5 Pre-Summer Public Go-Live    :milestone, m5, after actN, 1d
 ```
 
 ---

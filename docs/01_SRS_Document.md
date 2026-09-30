@@ -39,11 +39,11 @@ Requirements were elicited through semi-structured interviews, contextual inquir
 
 ```mermaid
 graph TD
-    subgraph Stakeholder Elicitation Ecosystem
-        T[Tourists / Trekkers / Families] -->|Interviews & Surveys| RE[Requirements Engineering Team]
-        O[260 Homestay Owners] -->|Direct Observation in Hill Villages| RE
-        A[District Tourism Association] -->|Focus Groups & Operational Audits| RE
-        D[Uttarakhand Tourism Department] -->|Statutory & Funding Governance| RE
+    subgraph Ecosystem ["Stakeholder Elicitation Ecosystem"]
+        T["Tourists, Trekkers, and Families"] -->|"Interviews and Surveys"| RE["Requirements Engineering Team"]
+        O["260 Homestay Owners"] -->|"Direct Observation in Hill Villages"| RE
+        A["District Tourism Association"] -->|"Focus Groups and Operational Audits"| RE
+        D["Uttarakhand Tourism Department"] -->|"Statutory and Funding Governance"| RE
     end
 ```
 
