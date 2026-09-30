@@ -68,16 +68,16 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph ECP Partitioning: Guest Count
-        GC_InvLow[Invalid Partition 1: GC < 1<br/><i>Values: -5, 0</i>]
-        GC_Valid[Valid Partition: 1 <= GC <= 10<br/><i>Values: 1, 4, 7, 10</i>]
-        GC_InvHigh[Invalid Partition 2: GC > 10<br/><i>Values: 11, 25</i>]
+    subgraph GC_Group ["ECP Partitioning: Guest Count"]
+        GC_InvLow["Invalid Partition 1: Guest Count &lt; 1<br/>(Values: -5, 0)"]
+        GC_Valid["Valid Partition: 1 &le; Guest Count &le; 10<br/>(Values: 1, 4, 7, 10)"]
+        GC_InvHigh["Invalid Partition 2: Guest Count &gt; 10<br/>(Values: 11, 25)"]
     end
 
-    subgraph ECP Partitioning: Stay Length
-        SL_InvLow[Invalid Partition 1: SL < 1<br/><i>Values: -1, 0</i>]
-        SL_Valid[Valid Partition: 1 <= SL <= 30<br/><i>Values: 1, 15, 30</i>]
-        SL_InvHigh[Invalid Partition 2: SL > 30<br/><i>Values: 31, 90</i>]
+    subgraph SL_Group ["ECP Partitioning: Stay Length"]
+        SL_InvLow["Invalid Partition 1: Stay Length &lt; 1<br/>(Values: -1, 0)"]
+        SL_Valid["Valid Partition: 1 &le; Stay Length &le; 30<br/>(Values: 1, 15, 30)"]
+        SL_InvHigh["Invalid Partition 2: Stay Length &gt; 30<br/>(Values: 31, 90)"]
     end
 ```
 

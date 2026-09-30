@@ -23,35 +23,35 @@ Field onboarding cannot wait until the entire software platform is finished in W
 
 ```mermaid
 graph TD
-    WBS[1.0 HomeStay Booking Platform]
+    WBS["1.0 HomeStay Booking Platform"]
     
-    WBS --> P1[1.1 Requirements & Governance]
-    P1 --> W111[1.1.1 Stakeholder Elicitation in Hills]
-    P1 --> W112[1.1.2 IEEE 830 SRS & NFR Targets]
-    P1 --> W113[1.1.3 Association & Dept Sign-off]
+    WBS --> P1["1.1 Requirements and Governance"]
+    P1 --> W111["1.1.1 Stakeholder Elicitation in Hills"]
+    P1 --> W112["1.1.2 IEEE 830 SRS and NFR Targets"]
+    P1 --> W113["1.1.3 Association and Dept Sign-off"]
 
-    WBS --> P2[1.2 Software Engineering & UML]
-    P2 --> W121[1.2.1 Architecture & Database Schema]
-    P2 --> W122[1.2.2 Core Calendar & Lock Engine]
-    P2 --> W123[1.2.3 Listing & Field Onboarding Tool]
-    P2 --> W124[1.2.4 Payment Gateway & Escrow Logic]
-    P2 --> W125[1.2.5 Low-Bandwidth Owner Offline PWA]
-    P2 --> W126[1.2.6 Association & Audit Dashboard]
+    WBS --> P2["1.2 Software Engineering and UML"]
+    P2 --> W121["1.2.1 Architecture and Database Schema"]
+    P2 --> W122["1.2.2 Core Calendar and Lock Engine"]
+    P2 --> W123["1.2.3 Listing and Field Onboarding Tool"]
+    P2 --> W124["1.2.4 Payment Gateway and Escrow Logic"]
+    P2 --> W125["1.2.5 Low-Bandwidth Owner Offline PWA"]
+    P2 --> W126["1.2.6 Association and Audit Dashboard"]
 
-    WBS --> P3[1.3 Field Operations & Onboarding]
-    P3 --> W131[1.3.1 Cluster Route Planning & Gear Setup]
-    P3 --> W132[1.3.2 Batch 1 Onboarding: 90 Homestays]
-    P3 --> W133[1.3.3 Batch 2 Onboarding: 90 Homestays]
-    P3 --> W134[1.3.4 Batch 3 Onboarding: 80 Homestays]
+    WBS --> P3["1.3 Field Operations and Onboarding"]
+    P3 --> W131["1.3.1 Cluster Route Planning and Gear Setup"]
+    P3 --> W132["1.3.2 Batch 1 Onboarding: 90 Homestays"]
+    P3 --> W133["1.3.3 Batch 2 Onboarding: 90 Homestays"]
+    P3 --> W134["1.3.4 Batch 3 Onboarding: 80 Homestays"]
 
-    WBS --> P4[1.4 Testing & Quality Assurance]
-    P4 --> W141[1.4.1 BVA & Concurrency Stress Testing]
-    P4 --> W142[1.4.2 2G Network Latency Simulation]
-    P4 --> W143[1.4.3 Field Pilot & Owner UAT]
+    WBS --> P4["1.4 Testing and Quality Assurance"]
+    P4 --> W141["1.4.1 BVA and Concurrency Stress Testing"]
+    P4 --> W142["1.4.2 2G Network Latency Simulation"]
+    P4 --> W143["1.4.3 Field Pilot and Owner UAT"]
 
-    WBS --> P5[1.5 Deployment & Pre-Season Launch]
-    P5 --> W151[1.5.1 Cloud Infrastructure Hardening]
-    P5 --> W152[1.5.2 Tourism Dept Formal Go-Live]
+    WBS --> P5["1.5 Deployment and Pre-Season Launch"]
+    P5 --> W151["1.5.1 Cloud Infrastructure Hardening"]
+    P5 --> W152["1.5.2 Tourism Dept Formal Go-Live"]
 ```
 
 ---

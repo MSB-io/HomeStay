@@ -94,22 +94,13 @@ $$\text{Risk Exposure } (E) = P \times I \quad (\text{Scale } 1 \text{ to } 25)$
 * **Medium Risk ($8 \le E \le 12$)**: Mitigation plan required.
 * **High / Critical Risk ($15 \le E \le 25$)**: Active RMMM protocol triggered.
 
-```mermaid
-quadrantChart
-    title Risk Exposure Matrix (Probability vs Impact)
-    x-axis Low Impact --> High Impact
-    y-axis Low Probability --> High Probability
-    quadrant-1 High Exposure: Active RMMM Protocol
-    quadrant-2 Monitor Closely
-    quadrant-3 Low Priority
-    quadrant-4 Contingency Ready
-    "RSK-01: Weak Internet in Hills": [0.85, 0.95]
-    "RSK-02: Peak Overbooking Collisions": [0.90, 0.85]
-    "RSK-03: Low Smartphone Literacy": [0.80, 0.75]
-    "RSK-04: Hill Landslides / Road Blocks": [0.60, 0.65]
-    "RSK-05: Payment Gateway Sandbox Delays": [0.70, 0.45]
-    "RSK-06: Unverified Homestay Photos": [0.40, 0.50]
-```
+| Probability \ Impact | 1: Very Low | 2: Low | 3: Moderate | 4: High | 5: Critical |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **5: Frequent** | 5 (Low) | 10 (Med) | 15 (High) | **20: RSK-01** (Critical) | 25 (Critical) |
+| **4: Probable** | 4 (Low) | 8 (Med) | 12 (Med) | **16: RSK-03** (High) | **20: RSK-02** (Critical) |
+| **3: Occasional** | 3 (Low) | 6 (Low) | **9: RSK-05** (Med) | **12: RSK-04** (Med) | 15 (High) |
+| **2: Remote** | 2 (Low) | 4 (Low) | 6 (Low) | **8: RSK-06** (Med) | 10 (Med) |
+| **1: Improbable** | 1 (Low) | 2 (Low) | 3 (Low) | 4 (Low) | 5 (Low) |
 
 ---
 
