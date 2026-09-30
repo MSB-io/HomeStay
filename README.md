@@ -32,8 +32,8 @@ A district tourism association represents **260 homestays** in the rugged hills 
 │   └── 📄 06_Risk_Register_and_Status_Report.md # Week-8 EVM, 5x5 Risk Matrix & RMMM
 │
 └── 📁 assets/                              # Case Study Materials & Screenshots
-    ├── 🖼️ Screenshot 2026-09-30 at 8.52.11 PM.png # Case Study Brief (Part 1)
-    └── 🖼️ Screenshot 2026-09-30 at 8.52.27 PM.png # Case Study Brief (Part 2)
+    ├── 🖼️ case_study_brief_page_1.png      # Case Study Brief (Part 1: Objectives & Data)
+    └── 🖼️ case_study_brief_page_2.png      # Case Study Brief (Part 2: Outcomes & Deliverables)
 ```
 
 ---
