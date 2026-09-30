@@ -1,5 +1,5 @@
 # Software Design & UML Architecture Package
-## Case Study 103: HomeStay – Booking Platform for Homestays in a Hill District (Uttarakhand)
+## Case Study 103: HomeStay  -  Booking Platform for Homestays in a Hill District (Uttarakhand)
 **Deliverable Type:** Object-Oriented Analysis & Design (OOAD) Specification  
 **Architecture Paradigm:** Modular Service Architecture with Loose Coupling & Event-Driven Decoupling  
 
@@ -9,7 +9,7 @@
 
 The HomeStay platform is designed with two fundamental architectural imperatives:
 1. **High Cohesion**: Every subsystem encompasses a singular, narrowly defined business responsibility (e.g., the `AvailabilityCalendar` manages date interval occupancies and holds; the `PaymentGateway` manages financial authorization, tokenization, and webhooks).
-2. **Loose Coupling**: The `AvailabilityCalendar` and `PaymentProcessing` modules possess zero direct knowledge of each other’s internal database schemas or APIs. Instead, they interact via an ephemeral mediator contract—the **Reservation Hold Token**—and asynchronous domain events (`HoldAcquired`, `PaymentSucceeded`, `HoldExpired`).
+2. **Loose Coupling**: The `AvailabilityCalendar` and `PaymentProcessing` modules possess zero direct knowledge of each other’s internal database schemas or APIs. Instead, they interact via an ephemeral mediator contract - the **Reservation Hold Token** - and asynchronous domain events (`HoldAcquired`, `PaymentSucceeded`, `HoldExpired`).
 
 ```mermaid
 graph LR

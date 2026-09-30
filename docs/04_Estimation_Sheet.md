@@ -1,5 +1,5 @@
 # Project Estimation Sheet & Schedule Feasibility
-## Case Study 103: HomeStay – Booking Platform for Homestays in a Hill District (Uttarakhand)
+## Case Study 103: HomeStay  -  Booking Platform for Homestays in a Hill District (Uttarakhand)
 **Deliverable Type:** Quantitative Estimation Model & Mathematical Feasibility Analysis  
 **Frameworks Used:** Deterministic Work-Capacity Model, Three-Point PERT Analysis & The Cone of Uncertainty  
 
@@ -166,7 +166,7 @@ graph LR
 * Although our IEEE 830 specification narrows this cone to approximately **$\pm 15\%$**, residual variance remains inherent in external dependencies (payment gateway sandbox approval, mobile cellular signal coverage in high-altitude zones).
 
 ### 6.2 External Variance Factors in Hill Terrains
-* **Terrain & Weather Disruptions**: Unseasonal landslides or road closures in Uttarakhand can instantly freeze field onboarding for 3–5 days.
+* **Terrain & Weather Disruptions**: Unseasonal landslides or road closures in Uttarakhand can instantly freeze field onboarding for 3 - 5 days.
 * **Owner Adoption Friction**: Teaching elderly homestay owners to manage booking calendars via smartphones is not a deterministic mechanical process; pedagogical friction varies per owner.
 * **Third-Party Telephony**: SMS and WhatsApp delivery rates depend on regional telecom towers (BSNL, Jio, Airtel) in hill districts.
 

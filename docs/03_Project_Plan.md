@@ -1,5 +1,5 @@
 # Project Plan & Schedule Management
-## Case Study 103: HomeStay – Booking Platform for Homestays in a Hill District (Uttarakhand)
+## Case Study 103: HomeStay  -  Booking Platform for Homestays in a Hill District (Uttarakhand)
 **Planning Methodology:** Critical Path Method (CPM) & Agile-Iterative Hybrid Schedule  
 **Target Window:** 16 Calendar Weeks (Strict Summer Season Deadline)  
 **Assigned Resources:** 3 Full-Stack Developers (6 hrs/day), 3 Field Onboarding Staff (5 hrs/day)  
@@ -174,9 +174,9 @@ gantt
 
 | Project Phase | Calendar Weeks | Dev 1 (Lead Backend) | Dev 2 (Full Stack) | Dev 3 (PWA / Mobile) | Field Staff (3 Personnel) |
 | :--- | :---: | :--- | :--- | :--- | :--- |
-| **Phase 1: Inception** | Weeks 1–2 | SRS & API Design | Architecture & Schemas | Wireframes & Benchmarks | Field Route Surveys |
-| **Phase 2: Core Platform** | Weeks 3–5 | Lock Engine & Redis | Listing API & Onboard Tool | PWA Shell & IndexedDB | Training & Test Profiles |
-| **Phase 3: Integration** | Weeks 6–8 | Calendar Logic | Payment Gateway & Escrow | Offline Sync & Cache | Onboard Batch 1 (90 Units) |
-| **Phase 4: Scaling & Dash** | Weeks 9–11 | Association Dashboard | Audit & CSV Export | Notification & Fallback | Onboard Batch 2 (90 Units) |
-| **Phase 5: Finalization** | Weeks 12–14 | Stress / Load Testing | Defect Remediation | Low-Bandwidth Optimizations | Onboard Batch 3 (80 Units) |
-| **Phase 6: UAT & Go-Live** | Weeks 15–16 | Production Rollout | Ops Monitoring | Field Support | Village Owner Handholding |
+| **Phase 1: Inception** | Weeks 1 - 2 | SRS & API Design | Architecture & Schemas | Wireframes & Benchmarks | Field Route Surveys |
+| **Phase 2: Core Platform** | Weeks 3 - 5 | Lock Engine & Redis | Listing API & Onboard Tool | PWA Shell & IndexedDB | Training & Test Profiles |
+| **Phase 3: Integration** | Weeks 6 - 8 | Calendar Logic | Payment Gateway & Escrow | Offline Sync & Cache | Onboard Batch 1 (90 Units) |
+| **Phase 4: Scaling & Dash** | Weeks 9 - 11 | Association Dashboard | Audit & CSV Export | Notification & Fallback | Onboard Batch 2 (90 Units) |
+| **Phase 5: Finalization** | Weeks 12 - 14 | Stress / Load Testing | Defect Remediation | Low-Bandwidth Optimizations | Onboard Batch 3 (80 Units) |
+| **Phase 6: UAT & Go-Live** | Weeks 15 - 16 | Production Rollout | Ops Monitoring | Field Support | Village Owner Handholding |

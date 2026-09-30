@@ -1,5 +1,5 @@
 # Test Plan & Quality Assurance Evidence
-## Case Study 103: HomeStay – Booking Platform for Homestays in a Hill District (Uttarakhand)
+## Case Study 103: HomeStay  -  Booking Platform for Homestays in a Hill District (Uttarakhand)
 **Deliverable Type:** Verification & Validation (V&V) Quality Engineering Document  
 **Focus Areas:** Boundary Value Analysis (BVA), Equivalence Partitioning, Overbooking Decision Tables, Defect Metrics (DRE & Defect Density)  
 
@@ -122,7 +122,7 @@ The decision table specifies exact business logic for handling concurrent date c
 
 ## 5. Formal Defect Log (Execution Evidence)
 
-During integration and concurrency stress testing (Weeks 10–12), 24 defects were systematically logged and remediated:
+During integration and concurrency stress testing (Weeks 10 - 12), 24 defects were systematically logged and remediated:
 
 | Defect ID | Description | Severity | Module Detected | Detection Phase | Root Cause Analysis | Remediation Action | Status |
 | :---: | :--- | :---: | :--- | :---: | :--- | :--- | :---: |

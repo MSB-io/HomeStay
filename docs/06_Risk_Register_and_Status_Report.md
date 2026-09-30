@@ -1,5 +1,5 @@
 # Risk Management, Monitoring & Week-8 Status Report
-## Case Study 103: HomeStay – Booking Platform for Homestays in a Hill District (Uttarakhand)
+## Case Study 103: HomeStay  -  Booking Platform for Homestays in a Hill District (Uttarakhand)
 **Deliverable Type:** Earned Value Project Control & Comprehensive Risk Governance  
 **Governance Authority:** District Tourism Department (Project Sponsor) & Tourism Association  
 
@@ -65,7 +65,7 @@ $$SPI = \frac{EV}{PV} = \frac{₹5.04}{₹6.00} = \mathbf{0.840}$$
 
 > *"To the Honourable Tourism Department Committee:*  
 > *At first glance, seeing that we have only spent ₹5.2 Lakh against a planned budget of ₹6.0 Lakh might look like we are saving money (an apparent ₹80,000 surplus). **However, this is an optical illusion.**  
-> We have spent less cash purely because our field onboarding staff and development teams have achieved less work than planned (42% completed versus 50% planned). For the work we have actually delivered (valued at ₹5.04 Lakh), we spent ₹5.20 Lakh—meaning we are running ₹16,000 over cost and are **approximately 1.3 weeks behind schedule**.  
+> We have spent less cash purely because our field onboarding staff and development teams have achieved less work than planned (42% completed versus 50% planned). For the work we have actually delivered (valued at ₹5.04 Lakh), we spent ₹5.20 Lakh - meaning we are running ₹16,000 over cost and are **approximately 1.3 weeks behind schedule**.  
 > If we continue at this current rate ($SPI = 0.84$), the platform will miss the critical pre-summer season deadline by 2.5 weeks, going live in mid-June rather than May 1st."*
 
 ---
