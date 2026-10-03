@@ -99,7 +99,7 @@ export default function Trips() {
       )}
 
       {mine.length === 0 && (
-        <div className="mt-10 rounded-2xl border border-dashed border-neutral-300 p-12 text-center">
+        <div className="mt-10 rounded-md border border-dashed border-neutral-300 p-12 text-center">
           <CalendarX2 className="mx-auto size-6" />
           <p className="mt-3 font-semibold">No trips yet</p>
           <Link to="/" className={cn(btn('primary'), 'mt-4')}>Find a homestay</Link>
@@ -113,7 +113,7 @@ export default function Trips() {
               Check-in is {fmtDate(toCancel.checkIn, { weekday: 'long', day: 'numeric', month: 'long' })}. Under the hill-district policy this falls
               in the <span className="font-semibold text-ink">“{quote.label.toLowerCase()}”</span> tier.
             </p>
-            <dl className="mt-5 space-y-2 rounded-2xl bg-neutral-50 p-4 text-sm">
+            <dl className="mt-5 space-y-2 rounded-md bg-neutral-50 p-4 text-xs border border-neutral-200/60">
               <div className="flex justify-between"><dt className="text-neutral-500">Amount paid</dt><dd>{inr(toCancel.amount)}</dd></div>
               <div className="flex justify-between"><dt className="text-neutral-500">Refund tier</dt><dd>{quote.pct}%</dd></div>
               {quote.fee > 0 && <div className="flex justify-between"><dt className="text-neutral-500">Gateway fee</dt><dd>−{inr(quote.fee)}</dd></div>}
@@ -156,7 +156,7 @@ export default function Trips() {
           onChange={(e) => setComment(e.target.value)}
           rows={3}
           placeholder="What made this stay special?"
-          className="mt-5 w-full rounded-xl p-3 text-sm ring-1 ring-neutral-200 outline-none focus:ring-2 focus:ring-ink"
+          className="mt-5 w-full rounded-md p-3 text-xs border border-neutral-200 outline-none focus:border-ink"
         />
         <Button
           id="submit-review"

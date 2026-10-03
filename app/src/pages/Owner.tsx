@@ -98,9 +98,9 @@ export default function Owner() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 pb-16 sm:px-6 lg:px-8">
       {/* Top Banner: Low-Bandwidth / Offline-First Simulation Control */}
-      <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-6 flex flex-col gap-4 rounded-md border border-neutral-200 bg-neutral-50 p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <div className={cn('grid size-10 place-items-center rounded-xl text-white transition-colors', online ? 'bg-ink' : 'bg-neutral-600')}>
+          <div className={cn('grid size-9 place-items-center rounded-md text-white transition-colors', online ? 'bg-ink' : 'bg-neutral-600')}>
             {online ? <Wifi className="size-5" /> : <WifiOff className="size-5" />}
           </div>
           <div>
@@ -169,7 +169,7 @@ export default function Owner() {
                 const next = HOMESTAYS.find((h) => h.id === e.target.value)
                 if (next) setSelectedRoomId(next.rooms[0].id)
               }}
-              className="h-10 rounded-xl border border-neutral-300 bg-white pr-9 pl-3 text-sm font-medium text-ink outline-none hover:border-neutral-400 focus:border-ink"
+              className="h-9 rounded-md border border-neutral-300 bg-white pr-8 pl-3 text-xs font-medium text-ink outline-none hover:border-neutral-400 focus:border-ink"
               id="owner-homestay-selector"
             >
               {HOMESTAYS.map((h) => (
@@ -247,7 +247,7 @@ export default function Owner() {
             ) : (
               <div className="mt-4 space-y-3">
                 {arrivalsToday.map((b) => (
-                  <div key={b.id} className="rounded-xl border border-neutral-200 p-3.5">
+                  <div key={b.id} className="rounded-md border border-neutral-200 p-3.5">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <p className="font-semibold text-sm">{b.guestName}</p>
@@ -284,7 +284,7 @@ export default function Owner() {
             ) : (
               <div className="mt-4 space-y-3">
                 {inHouseToday.map((b) => (
-                  <div key={b.id} className="rounded-xl bg-neutral-50 p-3">
+                  <div key={b.id} className="rounded-md bg-neutral-50 p-3 border border-neutral-200/60">
                     <div className="flex items-center justify-between">
                       <p className="font-medium text-sm">{b.guestName}</p>
                       <Pill>Checked In</Pill>
@@ -319,7 +319,7 @@ export default function Owner() {
                 {hsBlocks.map((blk) => {
                   const rm = homestay.rooms.find((r) => r.id === blk.roomId)
                   return (
-                    <div key={blk.id} className="flex items-center justify-between rounded-xl border border-neutral-200 p-3">
+                    <div key={blk.id} className="flex items-center justify-between rounded-md border border-neutral-200 p-3">
                       <div>
                         <p className="text-sm font-medium">{rm?.name ?? 'Room'}</p>
                         <p className="text-xs text-neutral-500">
@@ -329,7 +329,7 @@ export default function Owner() {
                       </div>
                       <button
                         onClick={() => removeBlock(blk.id)}
-                        className="rounded-lg p-2 text-neutral-400 hover:bg-neutral-100 hover:text-ink"
+                        className="rounded p-1.5 text-neutral-400 hover:bg-neutral-100 hover:text-ink cursor-pointer"
                         title="Remove Block"
                         id={`remove-block-${blk.id}`}
                       >
@@ -353,13 +353,13 @@ export default function Owner() {
               </div>
 
               {/* Room Tabs */}
-              <div className="flex flex-wrap gap-1.5 rounded-xl border border-neutral-200 p-1">
+              <div className="flex flex-wrap gap-1 rounded-md border border-neutral-200 p-1">
                 {homestay.rooms.map((r) => (
                   <button
                     key={r.id}
                     onClick={() => setSelectedRoomId(r.id)}
                     className={cn(
-                      'rounded-lg px-3 py-1.5 text-xs font-medium transition',
+                      'rounded px-2.5 py-1 text-xs font-medium transition cursor-pointer',
                       r.id === activeRoomId ? 'bg-ink text-white' : 'text-neutral-600 hover:text-ink',
                     )}
                     id={`owner-room-tab-${r.id}`}
@@ -395,7 +395,7 @@ export default function Owner() {
           </Card>
 
           {/* Simple Owner Education Tip for Hill Villages */}
-          <div className="rounded-2xl border border-dashed border-neutral-300 p-5">
+          <div className="rounded-md border border-dashed border-neutral-300 p-5 bg-white">
             <p className="flex items-center gap-2 text-sm font-semibold">
               <Smartphone className="size-4" /> Hill Host Operating Guide
             </p>
@@ -461,7 +461,7 @@ export default function Owner() {
           </Field>
 
           {blockError && (
-            <p className="rounded-xl bg-neutral-100 p-3 text-xs font-medium text-ink ring-1 ring-ink/20">
+            <p className="rounded-md bg-neutral-100 p-3 text-xs font-medium text-ink ring-1 ring-ink/20">
               {blockError}
             </p>
           )}
@@ -492,7 +492,7 @@ export default function Owner() {
             </div>
 
             {dayModal.booking && (
-              <div className="rounded-xl border border-neutral-200 p-4 space-y-2 text-sm">
+              <div className="rounded-md border border-neutral-200 p-4 space-y-2 text-sm">
                 <p className="font-semibold">{dayModal.booking.guestName}</p>
                 <p className="text-xs text-neutral-500">Booking Ref: {dayModal.booking.ref}</p>
                 <p className="text-xs text-neutral-500">Contact: {dayModal.booking.phone}</p>
@@ -502,7 +502,7 @@ export default function Owner() {
             )}
 
             {dayModal.block && (
-              <div className="rounded-xl border border-neutral-200 p-4 space-y-2 text-sm">
+              <div className="rounded-md border border-neutral-200 p-4 space-y-2 text-sm">
                 <p className="font-semibold">Walk-In / Telephone Hold</p>
                 <p className="text-xs text-neutral-500">Reason: {dayModal.block.reason}</p>
                 <p className="text-xs text-neutral-500">Range: {fmtDate(dayModal.block.checkIn)} to {fmtDate(dayModal.block.checkOut)}</p>
@@ -510,7 +510,7 @@ export default function Owner() {
             )}
 
             {dayModal.hold && (
-              <div className="rounded-xl border border-neutral-200 p-4 space-y-2 text-sm">
+              <div className="rounded-md border border-neutral-200 p-4 space-y-2 text-sm">
                 <p className="font-semibold">Active Checkout Lock (Redis TTL)</p>
                 <p className="text-xs text-neutral-500">Hold Token: {dayModal.hold.id}</p>
                 <p className="text-xs text-neutral-500">Dates are reserved for 15 minutes while payment is entered online.</p>

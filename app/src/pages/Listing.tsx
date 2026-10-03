@@ -91,7 +91,7 @@ export default function Listing() {
       </header>
 
       {/* Gallery */}
-      <div className="mt-6 grid animate-fade-up grid-cols-4 grid-rows-2 gap-2 overflow-hidden rounded-3xl [animation-delay:80ms] sm:h-[440px]">
+      <div className="mt-6 grid animate-fade-up grid-cols-4 grid-rows-2 gap-2 overflow-hidden rounded-md border border-neutral-200 [animation-delay:80ms] sm:h-[440px]">
         <img src={h.images[0]} alt={h.name} className="col-span-4 aspect-[4/3] size-full object-cover grayscale sm:col-span-2 sm:row-span-2 sm:aspect-auto" />
         {h.images.slice(1, 4).map((src, i) => (
           <img
@@ -136,7 +136,7 @@ export default function Listing() {
             </div>
 
             {(error || shownConflict) && (
-              <p role="alert" className="mt-4 rounded-xl bg-neutral-100 p-3 text-sm leading-snug text-ink ring-1 ring-ink/10">
+              <p role="alert" className="mt-4 rounded-md border border-neutral-200 bg-neutral-50 p-3 text-xs leading-snug text-ink">
                 {error ?? CONFLICT_MSG[shownConflict!]}
               </p>
             )}
@@ -159,7 +159,7 @@ export default function Listing() {
         {/* Details */}
         <div className="order-2 min-w-0 lg:order-1">
           <section className="flex items-center gap-4 border-b border-neutral-200 pb-8">
-            <div className="grid size-14 shrink-0 place-items-center rounded-full bg-ink text-lg font-semibold text-white">
+            <div className="grid size-12 shrink-0 place-items-center rounded-md bg-ink text-sm font-semibold text-white">
               {h.owner.name.split(' ').map((p) => p[0]).slice(0, 2).join('')}
             </div>
             <div className="min-w-0">
@@ -189,8 +189,8 @@ export default function Listing() {
             <p className="mt-3 leading-relaxed text-neutral-600">{h.description}</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {h.amenities.map((a) => (
-                <span key={a} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm ring-1 ring-neutral-200">
-                  <BadgeCheck className="size-3.5" /> {a}
+                <span key={a} className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs border border-neutral-200 text-neutral-700">
+                  <BadgeCheck className="size-3 text-ink" /> {a}
                 </span>
               ))}
             </div>
@@ -205,8 +205,8 @@ export default function Listing() {
                   id={`room-${r.id}`}
                   onClick={() => { setRoomId(r.id); setConflict(null) }}
                   className={cn(
-                    'rounded-2xl p-4 text-left transition',
-                    r.id === roomId ? 'bg-ink text-white' : 'ring-1 ring-neutral-200 hover:ring-neutral-400',
+                    'rounded-md p-4 text-left transition border',
+                    r.id === roomId ? 'bg-ink text-white border-ink' : 'border-neutral-200 hover:border-neutral-900',
                   )}
                 >
                   <p className="font-semibold">{r.name}</p>
@@ -263,7 +263,7 @@ export default function Listing() {
           <section className="py-8">
             <Eyebrow>Cancellation policy</Eyebrow>
             <h2 className="mt-2 text-xl font-semibold tracking-tight">Fair to travellers, fair to village hosts</h2>
-            <div className="mt-5 overflow-hidden rounded-2xl ring-1 ring-neutral-200">
+            <div className="mt-5 overflow-hidden rounded-md border border-neutral-200">
               {[
                 ['More than 7 days before check-in', `100% refund (minus ${LIMITS.gatewayFeePct}% gateway fee)`],
                 ['2 to 7 days before check-in', '50% refund · 50% to host'],

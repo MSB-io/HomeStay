@@ -8,14 +8,14 @@ type Size = 'sm' | 'md' | 'lg'
 
 export function btn(variant: Variant = 'primary', size: Size = 'md') {
   return cn(
-    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 select-none',
+    'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors duration-150 select-none cursor-pointer',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink',
-    'disabled:pointer-events-none disabled:opacity-40 active:scale-[0.98]',
-    size === 'sm' && 'h-8 px-3.5 text-[13px]',
-    size === 'md' && 'h-10 px-5 text-sm',
-    size === 'lg' && 'h-12 px-6 text-[15px]',
-    variant === 'primary' && 'bg-ink text-white hover:bg-neutral-800 shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_1px_2px_rgba(0,0,0,0.2)]',
-    variant === 'secondary' && 'bg-white text-ink ring-1 ring-neutral-200 hover:ring-neutral-400 hover:bg-neutral-50',
+    'disabled:pointer-events-none disabled:opacity-40 active:scale-[0.99]',
+    size === 'sm' && 'h-8 px-3 text-xs',
+    size === 'md' && 'h-9 px-4 text-sm',
+    size === 'lg' && 'h-11 px-6 text-sm',
+    variant === 'primary' && 'bg-ink text-white hover:bg-neutral-800',
+    variant === 'secondary' && 'bg-white text-ink border border-neutral-200 hover:border-neutral-900 hover:bg-neutral-50',
     variant === 'ghost' && 'text-ink hover:bg-neutral-100',
   )
 }
@@ -33,8 +33,8 @@ export function Pill({ children, solid, className }: { children: ReactNode; soli
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-medium tracking-wide whitespace-nowrap',
-        solid ? 'bg-ink text-white' : 'bg-white text-ink ring-1 ring-neutral-200',
+        'inline-flex items-center gap-1 rounded px-2 py-0.5 text-[11px] font-medium tracking-wide whitespace-nowrap',
+        solid ? 'bg-ink text-white' : 'bg-transparent text-neutral-700 border border-neutral-200',
         className,
       )}
     >
@@ -56,17 +56,17 @@ export function Rating({ value, count, className }: { value: number; count?: num
     <span className={cn('inline-flex items-center gap-1 text-sm font-medium', className)}>
       <Star className="size-3.5 fill-ink" strokeWidth={0} />
       {value.toFixed(1)}
-      {count !== undefined && <span className="font-normal text-neutral-500">({count})</span>}
+      {count !== undefined && <span className="font-normal text-neutral-400">({count})</span>}
     </span>
   )
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return <p className={cn('text-[11px] font-semibold tracking-[0.18em] text-neutral-500 uppercase', className)}>{children}</p>
+  return <p className={cn('text-[11px] font-medium tracking-[0.16em] text-neutral-400 uppercase', className)}>{children}</p>
 }
 
 export function Card({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cn('rounded-2xl bg-white ring-1 ring-neutral-200', className)}>{children}</div>
+  return <div className={cn('rounded-md bg-white border border-neutral-200/90', className)}>{children}</div>
 }
 
 export function Field({ label, children, hint, className }: { label: string; children: ReactNode; hint?: ReactNode; className?: string }) {
@@ -74,13 +74,13 @@ export function Field({ label, children, hint, className }: { label: string; chi
     <label className={cn('block', className)}>
       <span className="mb-1.5 block text-xs font-medium text-neutral-600">{label}</span>
       {children}
-      {hint && <span className="mt-1.5 block text-xs text-neutral-500">{hint}</span>}
+      {hint && <span className="mt-1.5 block text-xs text-neutral-400">{hint}</span>}
     </label>
   )
 }
 
 export const inputCls =
-  'h-11 w-full rounded-xl bg-white px-3.5 text-sm text-ink ring-1 ring-neutral-200 outline-none transition placeholder:text-neutral-400 hover:ring-neutral-300 focus:ring-2 focus:ring-ink'
+  'h-10 w-full rounded-md bg-white px-3 text-sm text-ink border border-neutral-200 outline-none transition placeholder:text-neutral-400 hover:border-neutral-300 focus:border-ink'
 
 export function Modal({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: ReactNode }) {
   useEffect(() => {
@@ -95,13 +95,13 @@ export function Modal({ open, onClose, title, children }: { open: boolean; onClo
   }, [open, onClose])
   if (!open) return null
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title}>
-      <div className="absolute inset-0 animate-fade-in bg-ink/40 backdrop-blur-[2px]" onClick={onClose} />
-      <div className="relative w-full max-w-md animate-fade-up rounded-t-3xl bg-white p-6 shadow-2xl sm:rounded-3xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={title}>
+      <div className="absolute inset-0 animate-fade-in bg-black/30 backdrop-blur-xs" onClick={onClose} />
+      <div className="relative w-full max-w-md animate-fade-up rounded-md bg-white p-6 shadow-xl border border-neutral-200">
         <div className="mb-4 flex items-start justify-between gap-4">
-          <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
-          <button onClick={onClose} className="-m-1 rounded-full p-1 text-neutral-500 hover:bg-neutral-100 hover:text-ink" aria-label="Close">
-            <X className="size-5" />
+          <h2 className="text-base font-semibold tracking-tight">{title}</h2>
+          <button onClick={onClose} className="-m-1 rounded p-1 text-neutral-400 hover:text-ink cursor-pointer" aria-label="Close">
+            <X className="size-4.5" />
           </button>
         </div>
         {children}
@@ -113,17 +113,17 @@ export function Modal({ open, onClose, title, children }: { open: boolean; onClo
 export function Stat({ label, value, sub, className }: { label: string; value: ReactNode; sub?: ReactNode; className?: string }) {
   return (
     <Card className={cn('p-5', className)}>
-      <p className="text-xs font-medium text-neutral-500">{label}</p>
+      <p className="text-xs text-neutral-500 font-normal">{label}</p>
       <p className="mt-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">{value}</p>
-      {sub && <p className="mt-1 text-xs text-neutral-500">{sub}</p>}
+      {sub && <p className="mt-1 text-xs text-neutral-400">{sub}</p>}
     </Card>
   )
 }
 
 export function Bar({ value, max = 100, className }: { value: number; max?: number; className?: string }) {
   return (
-    <div className={cn('h-1.5 w-full overflow-hidden rounded-full bg-neutral-100', className)}>
-      <div className="h-full rounded-full bg-ink transition-[width] duration-700" style={{ width: `${Math.min(100, (value / max) * 100)}%` }} />
+    <div className={cn('h-1 w-full overflow-hidden rounded bg-neutral-100', className)}>
+      <div className="h-full rounded bg-ink transition-[width] duration-500" style={{ width: `${Math.min(100, (value / max) * 100)}%` }} />
     </div>
   )
 }

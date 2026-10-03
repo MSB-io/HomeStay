@@ -61,7 +61,7 @@ export default function Checkout() {
         <TimerOff className="mx-auto size-8" />
         <h1 className="mt-4 text-2xl font-semibold tracking-tight">This checkout session doesn’t exist</h1>
         <p className="mt-2 text-neutral-500">Start again from a homestay page to place a fresh 15-minute hold.</p>
-        <Link to="/" className="mt-6 inline-flex h-10 items-center rounded-full bg-ink px-5 text-sm font-medium text-white">Explore homestays</Link>
+        <Link to="/" className="mt-6 inline-flex h-9 items-center rounded-md bg-ink px-4 text-xs font-semibold text-white">Explore homestays</Link>
       </div>
     )
   }
@@ -125,7 +125,7 @@ export default function Checkout() {
               </p>
               <Link
                 to={`/homestay/${h.id}?in=${info.checkIn}&out=${info.checkOut}&guests=${info.guests}`}
-                className="mt-6 inline-flex h-10 items-center rounded-full bg-ink px-5 text-sm font-medium text-white"
+                className="mt-6 inline-flex h-9 items-center rounded-md bg-ink px-4 text-xs font-semibold text-white"
               >
                 Try again
               </Link>
@@ -162,8 +162,8 @@ export default function Checkout() {
                       aria-selected={method === id}
                       onClick={() => setMethod(id)}
                       className={cn(
-                        'flex flex-col items-center gap-1.5 rounded-xl py-3 text-sm transition',
-                        method === id ? 'bg-ink text-white' : 'ring-1 ring-neutral-200 hover:ring-neutral-400',
+                        'flex flex-col items-center gap-1.5 rounded-md py-3 text-xs transition border cursor-pointer',
+                        method === id ? 'bg-ink text-white border-ink' : 'border-neutral-200 hover:border-neutral-900',
                       )}
                     >
                       <Icon className="size-4.5" />
@@ -195,21 +195,21 @@ export default function Checkout() {
                     </Field>
                   )}
                 </div>
-                <p className="mt-4 flex items-start gap-2 rounded-xl bg-neutral-50 p-3 text-xs leading-relaxed text-neutral-600">
-                  <ShieldCheck className="mt-px size-4 shrink-0" />
+                <p className="mt-4 flex items-start gap-2 rounded-md bg-neutral-50 p-3 text-xs leading-relaxed text-neutral-600 border border-neutral-200/60">
+                  <ShieldCheck className="mt-px size-4 shrink-0 text-ink" />
                   Handled by a PCI-DSS payment gateway over TLS 1.3. HomeStay never stores card numbers, CVV or UPI PIN. Your money is held
                   in escrow and released to the host after check-in.
                 </p>
               </Card>
 
-              {formError && <p role="alert" className="rounded-xl bg-neutral-100 p-3 text-sm ring-1 ring-ink/10">{formError}</p>}
+              {formError && <p role="alert" className="rounded-md bg-neutral-50 p-3 text-xs border border-neutral-300 text-ink">{formError}</p>}
 
               {processing ? (
                 <Card className="p-5 sm:p-6" >
                   <ol className="space-y-3" aria-live="polite">
                     {STEPS.map((s, i) => (
                       <li key={s} className={cn('flex items-center gap-3 text-sm transition', i > step && 'text-neutral-400')}>
-                        <span className={cn('grid size-6 place-items-center rounded-full', i < step ? 'bg-ink text-white' : 'ring-1 ring-neutral-300')}>
+                        <span className={cn('grid size-5 place-items-center rounded-md border', i < step ? 'bg-ink text-white border-ink' : 'border-neutral-300 text-neutral-400')}>
                           {i < step ? <Check className="size-3.5" /> : i === step ? <Loader2 className="size-3.5 animate-spin" /> : null}
                         </span>
                         {s}
@@ -228,18 +228,18 @@ export default function Checkout() {
 
           {/* Presentation helpers */}
           {!expired && !processing && (
-            <div className="mt-6 rounded-2xl border border-dashed border-neutral-300 p-5">
-              <p className="flex items-center gap-2 text-sm font-semibold"><FlaskConical className="size-4" /> Demo controls</p>
-              <p className="mt-1 text-xs text-neutral-500">Show the double-booking guard and the hold timeout without waiting 15 minutes.</p>
+            <div className="mt-6 rounded-md border border-dashed border-neutral-300 p-5 bg-white">
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-500"><FlaskConical className="size-3.5" /> Demo controls</p>
+              <p className="mt-1 text-xs text-neutral-400">Show the double-booking guard and the hold timeout without waiting 15 minutes.</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Button id="demo-second-traveller" type="button" size="sm" variant="secondary" onClick={simulateSecond}>
-                  Simulate a 2nd traveller booking these dates
+                  Simulate 2nd traveller booking
                 </Button>
                 <Button id="demo-expire-hold" type="button" size="sm" variant="secondary" onClick={() => expireHoldNow(info.id)}>
-                  Expire my hold now
+                  Expire hold now
                 </Button>
               </div>
-              {demoMsg && <p className="mt-3 animate-fade-in rounded-xl bg-neutral-50 p-3 text-sm">{demoMsg}</p>}
+              {demoMsg && <p className="mt-3 animate-fade-in rounded-md bg-neutral-50 border border-neutral-200 p-3 text-xs text-neutral-700">{demoMsg}</p>}
             </div>
           )}
         </div>

@@ -49,7 +49,7 @@ export default function Voucher() {
   return (
     <div className="mx-auto max-w-5xl px-4 pt-8 sm:px-6 lg:px-8">
       {isNew && (
-        <div className="mb-8 flex animate-fade-up items-start gap-3 rounded-2xl bg-ink p-5 text-white">
+        <div className="mb-8 flex animate-fade-up items-start gap-3 rounded-md bg-ink p-5 text-white">
           <CircleCheck className="mt-0.5 size-5 shrink-0" />
           <div>
             <p className="font-semibold">You’re booked, {firstName}.</p>
@@ -73,7 +73,7 @@ export default function Voucher() {
                 {b.txId && <Pill>{b.txId}</Pill>}
               </div>
             </div>
-            <div className="size-28 shrink-0 rounded-xl bg-white p-2 ring-1 ring-neutral-200">
+            <div className="size-28 shrink-0 rounded-md bg-white p-2 border border-neutral-200">
               <PseudoQR value={b.ref} />
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Voucher() {
                 ['Check-out', fmtDate(b.checkOut, { weekday: 'short', day: 'numeric', month: 'short' }), 'by 11:00'],
                 ['Guests', String(b.guests), `${nights} night${nights > 1 ? 's' : ''}`],
               ].map(([k, v, s]) => (
-                <div key={k} className="rounded-xl bg-neutral-50 p-3">
+                <div key={k} className="rounded-md bg-neutral-50 p-3 border border-neutral-200/60">
                   <p className="text-[11px] text-neutral-500">{k}</p>
                   <p className="mt-0.5 font-semibold">{v}</p>
                   <p className="text-[11px] text-neutral-500">{s}</p>
@@ -130,25 +130,25 @@ export default function Voucher() {
           <Eyebrow>Delivered to {b.phone}</Eyebrow>
           <Card className="p-4">
             <p className="flex items-center gap-2 text-xs font-medium text-neutral-500"><MessageSquareText className="size-3.5" /> SMS · works on 2G</p>
-            <div className="mt-3 rounded-2xl rounded-tl-sm bg-neutral-100 p-3 text-[13px] leading-relaxed">{sms}</div>
+            <div className="mt-3 rounded-md bg-neutral-50 border border-neutral-200 p-3 text-xs leading-relaxed">{sms}</div>
             <p className="mt-2 text-[11px] text-neutral-400">{sms.length} characters · 2 SMS segments</p>
           </Card>
           <Card className="p-4">
             <p className="flex items-center gap-2 text-xs font-medium text-neutral-500"><MessageCircle className="size-3.5" /> WhatsApp</p>
             <div className="mt-3 space-y-2">
-              <div className="overflow-hidden rounded-2xl rounded-tl-sm bg-neutral-100">
+              <div className="overflow-hidden rounded-md bg-neutral-50 border border-neutral-200">
                 <img src={h.images[0]} alt="" className="h-24 w-full object-cover grayscale" />
-                <div className="p-3 text-[13px] leading-relaxed">
-                  <p className="font-semibold">Booking confirmed · {b.ref}</p>
-                  <p className="text-neutral-600">{h.name} · {fmtDate(b.checkIn)} → {fmtDate(b.checkOut)}</p>
-                  <p className="mt-1 text-neutral-600">📍 Location pin and offline directions attached.</p>
+                <div className="p-3 text-xs leading-relaxed">
+                  <p className="font-semibold">{h.name}</p>
+                  <p className="text-neutral-500">{fmtDate(b.checkIn)} → {fmtDate(b.checkOut)}</p>
+                  <p className="mt-1 text-neutral-500">📍 Location pin and offline directions attached.</p>
                 </div>
               </div>
             </div>
           </Card>
           <Card className={cn('p-4')}>
             <p className="text-xs font-medium text-neutral-500">Host alert · {h.owner.name}</p>
-            <div className="mt-3 rounded-2xl rounded-tl-sm bg-ink p-3 text-[13px] leading-relaxed text-white">
+            <div className="mt-3 rounded-md bg-ink p-3 text-xs leading-relaxed text-white">
               नई बुकिंग {b.ref}: {firstName}, {b.guests} मेहमान, {fmtDate(b.checkIn)} से {nights} रात। कैलेंडर अपडेट हो गया है।
             </div>
           </Card>
