@@ -1,8 +1,6 @@
 # Case Study 103: HomeStay Booking Platform
 ## Presentation Master Document: From Problem to Solution
 
----
-
 ## 1. The Story & The Problem Statement
 
 ### 1.1 The Context: Hill Tourism in Uttarakhand
