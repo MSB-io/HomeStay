@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* Design tokens: strict black & white, light mode only, Geist only. */
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+
+  --animate-fade-up: fade-up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-pulse-dot: pulse-dot 1.6s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-white font-sans text-ink;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    @apply bg-ink text-white;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+
+/* Diagonal hatch used for "walk-in blocked" calendar cells. */
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    #0a0a0a 0 1.5px,
+    transparent 1.5px 6px
+  );
+}
+
+/* Dotted outline used for "on hold" calendar cells. */
+@utility dotted-ring {
+  outline: 1.5px dashed #0a0a0a;
+  outline-offset: -3px;
+}
+
+@utility grain {
+  background-image: radial-gradient(rgba(10, 10, 10, 0.06) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
