@@ -175,3 +175,12 @@ To ensure the system launches before summer, features are strictly categorized:
   1. *Weak 2G Internet:* Offline-first PWA with local IndexedDB cache + SMS fallback.
   2. *Overbooking Collisions:* Redis distributed lock (15-min TTL) + one-tap walk-in block.
   3. *Low Owner Smartphone Literacy:* High-contrast color-coded UI (Green = Free, Red = Booked) + in-person field staff training.
+
+### 5.5 Interactive Prototype Demonstration (Live)
+An interactive React 19 + TypeScript + Tailwind CSS v4 prototype is included in [`app/`](app/) running live at [http://127.0.0.1:5173](http://127.0.0.1:5173). It directly demonstrates:
+* **FR-01 & Testing:** Search with Boundary Value Analysis limits (1–10 guests, 1–30 nights).
+* **FR-02 & UML:** 15-minute countdown reservation lock with race-condition collision simulation.
+* **FR-03 & FR-04:** Payment webhook simulation, split escrow payout (5% association levy), and dual SMS/WhatsApp host vouchers.
+* **FR-05 & FR-06:** Owner dashboard with offline-first PWA simulation and 1-tap manual walk-in block modal.
+* **FR-08:** Tiered cancellation refund engine (>7d 100%, 2–7d 50%, <48h 0%).
+* **FR-09 & EVM:** Association portal showing 247/260 onboarded homestays, Week-8 EVM status report, and CPM batch rollout.

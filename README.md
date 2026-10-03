@@ -89,5 +89,35 @@ All required deliverables have been systematically developed as modular, standal
 
 ---
 
+## Running the Web App Prototype Locally
+
+The project includes a complete, fully interactive React 19 + TypeScript + Tailwind CSS v4 prototype in the [`app/`](app/) directory:
+
+```bash
+# Navigate to the app directory
+cd app
+
+# Install dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+
+Open [http://127.0.0.1:5173](http://127.0.0.1:5173) in your browser to experience the platform with live mock data.
+
+---
+
+## Presentation Walkthrough
+
+For meetings, academic evaluations, or viva presentations, consult [`presentation.md`](presentation.md). It is structured as an all-in-one non-technical master deck designed for a 15–20 minute walkthrough:
+1. **The Story & The Problem Statement** (The ground reality in Uttarakhand hills)
+2. **Given Project Data** (Exact figures from the case study)
+3. **Project Objectives** (SEPM goals)
+4. **The Complete SRS Walkthrough in Layman's Terms** (10 Functional Requirements & 6 Measurable NFRs)
+5. **Architectural & SEPM Defenses** (UML, Loose Coupling, BVA/ECP, Decision Tables, EVM Math)
+
+---
+
 ## Viewing the Documents
 All markdown files contain native **Mermaid diagrams** that render automatically in GitHub, VS Code / Antigravity IDE markdown preview, and standard Markdown rendering engines.
