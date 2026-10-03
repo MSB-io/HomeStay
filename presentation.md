@@ -129,53 +129,110 @@ To ensure the system launches before summer, features are strictly categorized:
 
 ---
 
-## 5. Architecture, Quality & Project Control
+## 5. Core Concepts: 1-Line Read-Outs & Plain-English Explanations
 
+### 5.1 What does "Loosely Coupled" Mean?
+* **1-Line Read-Out:** *"Like a wall power socket and a plug, Calendar and Payments work independently through temporary 15-minute hold tokens so a bank or network failure never crashes room availability."*
+* **The Everyday Analogy:** Think of a **wall power socket and a plug**.
+  * The socket gives electricity; it doesn't care whether you plug in a laptop, a phone charger, or a heater. If your charger breaks, the wall socket doesn't explode. They are **loosely coupled**.
+  * If they were *tightly coupled*, the charger wire would be soldered permanently inside the wall. If your charger stopped working, you would have to break the entire wall down.
+* **In our HomeStay System:**
+  * The **Availability Calendar** (tracks dates) and the **Payment Gateway** (handles banks/UPI) are **loosely coupled**.
+  * The calendar knows **nothing** about credit cards or UPI. The payment gateway knows **nothing** about room numbers.
+  * How do they talk? Through a temporary ticket called a **15-Minute Hold Token**. The calendar locks the room for 15 minutes and hands over a token. If payment succeeds, the token is confirmed. If the bank or 2G network drops, the token simply expires, and the calendar unlocks the room automatically. Neither crashes the other.
 
-### 5.1 Architecture & UML Design
-* **How Availability and Payments are Kept Loosely Coupled:**  
-  The Calendar module knows nothing about banks or credit cards. The Payment module knows nothing about room numbers. They communicate via a temporary **15-Minute Hold Token**. If payment succeeds, the token turns into a permanent booking. If payment fails or times out, the token simply dissolves and releases the room.
-* **Cohesion:** Every module does one job: Calendar manages dates; Payment manages money; Notification handles SMS/WhatsApp.
+---
 
-### 5.2 Timeline, Estimation & Feasibility
+### 5.2 UML Diagrams Explained in Simple Words
+* **1-Line Read-Out:** *"UML diagrams are visual architectural blueprints answering who uses the system, how data is shaped, and how components interact step-by-step."*
+1. **Use Case Diagram:** *"Who uses the system and what can they do?"*  
+   * Shows actors (Tourist, Owner, Admin) and their actions (Search stay, Book stay, Block dates, View dashboard).
+2. **Class Diagram:** *"What are the data building blocks?"*  
+   * Shows entities and their relationships (e.g., A `Homestay` owns `Rooms`; a `Room` has an `AvailabilityCalendar`; a `Tourist` makes a `Booking`).
+3. **Sequence Diagram:** *"Who talks to whom step-by-step over time?"*  
+   * Shows the exact chronological flow for booking: Tourist clicks Book $\to$ System asks Calendar for a 15-min lock $\to$ Lock granted $\to$ Bank charges card $\to$ Webhook confirms payment $\to$ SMS sent.
+4. **Activity Diagram:** *"The business flowchart with decision paths."*  
+   * Shows decisions: Room available? (Yes $\to$ Lock for 15 mins; No $\to$ Suggest nearby homestays). Payment successful within 15 mins? (Yes $\to$ Confirm booking; No $\to$ Unlock room).
+5. **State Machine Diagram:** *"The life stages of a single Booking."*  
+   * Shows how a booking changes status: `INITIATED` $\to$ `HOLD_PENDING_PAYMENT` $\to$ `CONFIRMED` $\to$ `CHECKED_IN` $\to$ `COMPLETED` (or `CANCELLED` / `REFUNDED`).
+
+*(Full diagrams can be viewed in [`docs/02_UML_Design_Package.md`](docs/02_UML_Design_Package.md)).*
+
+---
+
+### 5.3 Boundary Value Analysis (BVA) & Equivalence Partitioning (ECP)
+* **1-Line Read-Out:** *"ECP groups inputs into valid and invalid buckets, while BVA tests the exact edge boundaries (like 0, 1, 10, 11) where programmers most often introduce `<` vs `<=` bugs."*
+* **Equivalence Class Partitioning (ECP) — Grouping into Buckets:**  
+  Divide inputs into valid and invalid buckets. For guest count (allowed 1 to 10):
+  * **Invalid Low Bucket:** Less than 1 (e.g., $0, -5$) $\to$ Must reject.
+  * **Valid Bucket:** 1 to 10 (e.g., $4$) $\to$ Must accept.
+  * **Invalid High Bucket:** Greater than 10 (e.g., $15$) $\to$ Must reject.
+* **Boundary Value Analysis (BVA) — Testing the Exact Edges:**  
+  Bugs almost always happen right at the boundary lines (e.g., when a programmer writes `<` instead of `<=`). So we test the exact edges:
+  * For **Guest Count [1 to 10]**: Test $0$ (just below), $1$ (exact min), $2$ (just above), $9$ (just below max), $10$ (exact max), $11$ (just above max).
+  * For **Stay Length [1 to 30 nights]**: Test $0$ (same-day checkout rejected), $1$ (min stay), $2$, $29$, $30$ (max stay), $31$ (rejected; stays over 30 days legally need a direct lease agreement).
+
+---
+
+### 5.4 Decision Table for Overbooking & Cancellations
+* **1-Line Read-Out:** *"An 'IF-THEN' logic matrix ensuring concurrent clicks on the same room reject race-condition duplicates, and cancellations refund 100% (>7d), 50% (2–7d), or 0% (<48h)."*
+* **Overbooking Race-Condition:**  
+  * *Condition:* Two tourists click "Pay" at the exact same millisecond for the same room.  
+  * *Action:* The first request gets the 15-minute lock. The second request gets rejected immediately with a friendly message: *"Someone is currently completing checkout for these dates. Please try again in 15 minutes."*
+* **Tiered Cancellations:**  
+  * Cancel **$> 7$ days** before check-in $\to$ **100% refund** to tourist.
+  * Cancel **2 to 7 days** before check-in $\to$ **50% refund** to tourist (50% given to host).
+  * Cancel **$< 48$ hours** before check-in $\to$ **0% refund** (100% payout to host to protect rural livelihoods).
+
+---
+
+### 5.5 Defect Density & Defect Removal Efficiency (DRE)
+* **1-Line Read-Out:** *"Our Defect Density of 1.60 defects/KLOC (below 3.0 benchmark) and DRE of 92% (above 85% standard) mathematically prove our software is production-ready."*
+* **Defect Density:** *"How many bugs exist per 1,000 lines of code?"*  
+  $$\text{Defect Density} = \frac{\text{Total Bugs}}{\text{KLOC (Thousand Lines of Code)}} = \frac{24 \text{ defects}}{15.0 \text{ KLOC}} = \mathbf{1.60 \text{ defects/KLOC}}$$
+  * *What to say:* Industry standard is between 1.0 and 3.0. Our score of 1.60 proves the code is well-written and tested.
+* **Defect Removal Efficiency (DRE):** *"What percentage of bugs did we catch internally before the end users found them?"*  
+  $$\text{DRE} = \frac{\text{Bugs caught by QA (46)}}{\text{QA Bugs (46)} + \text{Bugs found by users in pilot (4)}} \times 100\% = \mathbf{92.00\%}$$
+  * *What to say:* The industry benchmark is 85%. Our 92% means our team caught 92 out of every 100 issues before launch!
+
+---
+
+### 5.6 Week-8 EVM Variances (The "Optical Illusion")
+* **1-Line Read-Out:** *"Spending ₹80k less than planned was an optical illusion: we didn't save money, we are 16% behind schedule ($SV = -₹96\text{k}, SPI = 0.84$) and slightly over budget on delivered work ($CV = -₹16\text{k}, CPI = 0.97$)."*
+* **The Trick:** At Week 8, we planned to spend ₹6.0 Lakh, but our bank statement shows we only spent ₹5.2 Lakh. It looks like we saved ₹80,000!
+* **The Reality:** We didn't save money; **we fell behind schedule**:
+  * We planned to complete **50%** of the work ($PV = ₹6.00\text{L}$).
+  * We only completed **42%** of the work ($EV = ₹12.0\text{L} \times 0.42 = ₹5.04\text{L}$).
+  * **Schedule Variance ($SV$):** $EV - PV = ₹5.04\text{L} - ₹6.00\text{L} = \mathbf{-₹96,000}$ (We are **16% behind schedule**; $SPI = 0.84$).
+  * **Cost Variance ($CV$):** $EV - AC = ₹5.04\text{L} - ₹5.20\text{L} = \mathbf{-₹16,000}$ (For the work we actually delivered, we overspent by ₹16k; $CPI = 0.97$).
+* **The Fix:** We use contingency money to hire 1 extra local field assistant to speed up onboarding in Almora/Nainital, and temporarily freeze secondary report-export features.
+
+---
+
+### 5.7 The Top 3 Risks & How We Solve Them
+* **1-Line Read-Out:** *"We mitigate weak internet with an offline-first PWA, peak collisions with 15-minute locks and 1-tap walk-in blocks, and low digital literacy with color-coded buttons and field training."*
+1. **Weak 2G Mountain Internet:**  
+   * *Solution:* The owner app works **offline-first** (saves 30 days of data inside phone storage). If mobile data dies completely, booking alerts fall back to simple text SMS and voice calls.
+2. **Peak-Season Overbooking:**  
+   * *Solution:* A **15-minute countdown lock** prevents online collisions, plus a giant **"Walk-in Block"** button on the owner's phone so they can block dates in 1 second when someone walks in from the road.
+3. **Low Smartphone Literacy (Elderly Hosts):**  
+   * *Solution:* No long forms or complex text. Just intuitive colors: **Green = Available, Red = Booked, Orange = Check-in Today**, accompanied by in-person field staff training.
+
+---
+
+### 5.8 Timeline, Estimation & Feasibility
 * **Field Onboarding Math:**  
-  $260 \text{ homestays} \times 2.5 \text{ hrs} = 650 \text{ person-hours}$.  
-  Daily capacity: $3 \text{ staff} \times 5 \text{ hrs/day} = 15 \text{ hrs/day}$.  
-  Duration: $650 / 15 = \mathbf{43.33 \approx 44 \text{ working days}}$ (**8.7 weeks**).
+  $260 \text{ homestays} \times 2.5 \text{ hrs} = 650 \text{ person-hours} \div (3 \text{ staff} \times 5 \text{ hrs/day} = 15 \text{ hrs/day}) = \mathbf{43.33 \approx 44 \text{ working days}}$ (**8.7 weeks**).
 * **Software Development Math:**  
   $1,150 \text{ person-hours} \div (3 \text{ devs} \times 6 \text{ hrs/day} = 18 \text{ hrs/day}) = \mathbf{63.89 \approx 64 \text{ working days}}$ (**12.8 weeks**).
 * **The Strategic Secret (Sequential vs. Pipelined):**  
-  * If we waited for software to finish before starting onboarding: $12.8 + 8.7 = \mathbf{21.5 \text{ weeks}}$ (**FAILED! Misses summer season**).
-  * Our solution: Build the simple field onboarding tool in **Sprint 2 (Week 4)**. Field staff start onboarding immediately in **Week 5** while devs continue backend work.  
-  * Result: **Total project duration = 78 working days (15.6 weeks)**. **Comfortably meets the 16-week deadline!**
-* **Why an Estimate is Not a Promise:**  
-  Software development and mountain travel have natural variance (Cone of Uncertainty, weather landslides, network blackouts). An estimate is a probabilistic forecast that requires active risk management.
+  * Sequential: $12.8 + 8.7 = \mathbf{21.5 \text{ weeks}}$ (**Fails the 16-week deadline**).
+  * Pipelined: Build onboarding tool in Sprint 2 (Week 4), start onboarding Week 5 in parallel with dev. Total = **78 working days (15.6 weeks)**. **Comfortably meets the 16-week deadline!**
 
-### 5.3 Testing & Quality Evidence
-* **Boundary Value Analysis (BVA):**  
-  * `guest_count` [Min: 1, Max: 10]: Tested $-1, 0, 1, 2, 9, 10, 11$.  
-  * `stay_length` [Min: 1, Max: 30 nights]: Tested $-2, 0, 1, 2, 29, 30, 31$. Stays $>30$ days legally require a long-term lease.
-* **Overbooking Decision Table:** Tests all permutations of Vacant, Held, Confirmed states, active vs. expired locks, and concurrent race conditions.
-* **Defect Metrics:**  
-  * **Defect Density:** $24 \text{ defects} / 15.0 \text{ KLOC} = \mathbf{1.60 \text{ defects/KLOC}}$ (Industry benchmark is 1.0 to 3.0; indicates high code quality).
-  * **Defect Removal Efficiency (DRE):** $\frac{46 \text{ internal}}{46 + 4 \text{ external}} \times 100\% = \mathbf{92.00\%}$ (Significantly beats the 85% industry standard).
+---
 
-### 5.4 Risk Management & Week-8 Status Report
-* **Week-8 EVM Health (The "Optical Illusion"):**  
-  * Planned Spend ($PV$): ₹6.00 Lakh (50% work planned)
-  * Actual Spend ($AC$): ₹5.20 Lakh (Spent ₹80k less than planned!)
-  * Earned Value ($EV$): $₹12.0 \text{L} \times 42\% = \mathbf{₹5.04 \text{ Lakh}}$
-  * **Cost Variance ($CV$):** $5.04 - 5.20 = \mathbf{-₹16,000}$ (Slight cost overrun for work done).
-  * **Schedule Variance ($SV$):** $5.04 - 6.00 = \mathbf{-₹96,000}$ (**16% schedule delay; SPI = 0.84**).
-  * *Plain-English Explanation to Tourism Dept:* We did not save ₹80,000. We spent less money simply because we fell behind schedule.
-* **Corrective Action:** Fast-track Almora/Nainital field onboarding by hiring 1 local assistant using contingency funds, and freeze "Could Have" audit reports. Approved by the District Tourism Officer (DTO).
-* **Top 3 Risks Mitigated:**
-  1. *Weak 2G Internet:* Offline-first PWA with local IndexedDB cache + SMS fallback.
-  2. *Overbooking Collisions:* Redis distributed lock (15-min TTL) + one-tap walk-in block.
-  3. *Low Owner Smartphone Literacy:* High-contrast color-coded UI (Green = Free, Red = Booked) + in-person field staff training.
-
-### 5.5 Interactive Prototype Demonstration (Live)
-An interactive React 19 + TypeScript + Tailwind CSS v4 prototype is included in [`app/`](app/) running live at [http://127.0.0.1:5173](http://127.0.0.1:5173). It directly demonstrates:
+### 5.9 Interactive Prototype Demonstration (Live)
+An interactive React 19 + TypeScript + Tailwind CSS v4 prototype is running live at [http://127.0.0.1:5173](http://127.0.0.1:5173) in [`app/`](app/):
 * **FR-01 & Testing:** Search with Boundary Value Analysis limits (1–10 guests, 1–30 nights).
 * **FR-02 & UML:** 15-minute countdown reservation lock with race-condition collision simulation.
 * **FR-03 & FR-04:** Payment webhook simulation, split escrow payout (5% association levy), and dual SMS/WhatsApp host vouchers.
