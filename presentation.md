@@ -1,11 +1,6 @@
 # Case Study 103: HomeStay Booking Platform
 ## Presentation Master Document: From Problem to Solution
 
-> **Presenter Quick Note:**  
-> This master document is designed for your 15–20 minute presentation. It walks through the case study step-by-step in clear, plain-English terms.  
-> * **Primary Spotlight:** The Problem, the Context, and an in-depth walkthrough of the **Software Requirements Specification (SRS)**.  
-> * **Backup / "If Asked" Sections:** At the end of this document, you will find concise summaries of the **UML Architecture, Timeline & Estimation, QA & Testing, and Week-8 Budget/Risk Status** so you can answer any evaluator question immediately with exact numbers.
-
 ---
 
 ## 1. The Story & The Problem Statement
