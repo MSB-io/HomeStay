@@ -49,19 +49,23 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section: Minimalist, Airy with Generous Whitespace */}
-      <section className="relative px-6 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28 lg:px-12">
+      {/* Hero Section with Mountain Landscape */}
+      <section className="relative px-6 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28 lg:px-12 overflow-hidden">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img src="/images/village.jpg" alt="Uttarakhand Himalayan Village" className="size-full object-cover grayscale" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-white" />
+        </div>
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-3xl animate-fade-up">
-            <p className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-neutral-500 uppercase">
-              <BadgeCheck className="size-3.5 text-ink" /> 260 Verified Hill Homestays · Uttarakhand Tourism
+          <div className="max-w-3xl animate-fade-up text-white">
+            <p className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wide text-white/80 uppercase">
+              <BadgeCheck className="size-3.5 text-white" /> 260 Verified Hill Homestays · Uttarakhand Tourism
             </p>
-            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-ink sm:text-6xl lg:text-7xl leading-[1.08]">
+            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl leading-[1.08]">
               Stay with the hills.
               <br />
               Book with certainty.
             </h1>
-            <p className="mt-6 max-w-xl text-base text-neutral-500 sm:text-lg leading-relaxed">
+            <p className="mt-6 max-w-xl text-base text-white/80 sm:text-lg leading-relaxed">
               Verified photos, authentic village hosts, and an atomic 15-minute calendar hold that eliminates double-booking during peak mountain season.
             </p>
           </div>
