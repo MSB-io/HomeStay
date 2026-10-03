@@ -20,17 +20,27 @@ A district tourism association represents **260 homestays** in the rugged hills 
 
 ```
 Case_Study_103_HomeStay_Booking_Platform/
-|-- README.md
-|-- docs/
-|   |-- 01_SRS_Document.md
-|   |-- 02_UML_Design_Package.md
-|   |-- 03_Project_Plan.md
-|   |-- 04_Estimation_Sheet.md
-|   |-- 05_Test_Plan_and_Evidence.md
-|   \-- 06_Risk_Register_and_Status_Report.md
+|-- README.md                               # Project overview and executive mathematical summaries
+|-- presentation.md                         # 15-20 min Master Presentation Deck (Layman SRS & Architecture)
+|-- app/                                    # Interactive React 19 + TypeScript + Tailwind v4 Prototype
+|   |-- README.md                           # Frontend architecture and run guide
+|   |-- package.json                        # Dependencies (Tailwind v4, Lucide, Geist font, React Router)
+|   |-- public/images/                      # High-res photography of homestays, verandas, and villages
+|   \-- src/
+|       |-- components/                     # Layout, UI primitives (rounded-md), cards, calendar
+|       |-- data/mock.ts                    # Realistic mock DB mirroring the 260-homestay case study
+|       |-- pages/                          # 7 views: Home, Listing, Checkout, Voucher, Trips, Owner, Association
+|       \-- store/store.tsx                 # Centralized React state provider
+|-- docs/                                   # SEPM Engineering and Management Specifications
+|   |-- 01_SRS_Document.md                  # IEEE 830 Requirements Specification & RTM
+|   |-- 02_UML_Design_Package.md            # UML 2.5 Architecture Diagrams & Loose Coupling
+|   |-- 03_Project_Plan.md                  # WBS, CPM Network Analysis & 16-Week Gantt
+|   |-- 04_Estimation_Sheet.md              # Mathematical Feasibility Proofs & PERT Analysis
+|   |-- 05_Test_Plan_and_Evidence.md        # BVA/ECP Test Suites, Decision Table & DRE
+|   \-- 06_Risk_Register_and_Status_Report.md # Week-8 EVM, 5x5 Risk Matrix & RMMM Plans
 \-- assets/
-    |-- case_study_brief_page_1.png
-    \-- case_study_brief_page_2.png
+    |-- case_study_brief_page_1.png         # Scanned original case study assignment sheet (Page 1)
+    \-- case_study_brief_page_2.png         # Scanned original case study assignment sheet (Page 2)
 ```
 
 ---
@@ -39,8 +49,10 @@ Case_Study_103_HomeStay_Booking_Platform/
 
 All required deliverables have been systematically developed as modular, standalone specifications adhering to IEEE standards, UML 2.5 modeling, Critical Path Method (CPM), Earned Value Management (EVM), and formal software quality engineering principles:
 
-| File Name | Deliverable Title | Core Contents and Key Highlights |
+| File / Folder | Deliverable Title | Core Contents and Key Highlights |
 | :--- | :--- | :--- |
+| [`presentation.md`](presentation.md) | **Master Presentation Document** | 15–20 minute non-technical executive walkthrough covering the problem statement, given data vs. objectives, in-depth SRS walkthrough, and rapid Q&A defense. |
+| [`app/`](app/) | **Interactive Web Application** | Fully responsive React 19 + TypeScript + Tailwind v4 frontend prototype demonstrating search with BVA limits, 15-min hold countdown, checkout webhook simulation, QR voucher, offline owner mode, and association EVM dashboard. |
 | [`01_SRS_Document.md`](docs/01_SRS_Document.md) | **Software Requirements Specification (IEEE 830)** | Multi-stakeholder elicitation (Tourists, Owners, Association, Tourism Dept); **10 Functional Requirements**; **6 Measurable NFRs** (low-bandwidth bundle <= 450 KB, uptime >= 99.5%, PCI-DSS payment security, offline resilience); MoSCoW prioritization; Requirements Traceability Matrix (RTM). |
 | [`02_UML_Design_Package.md`](docs/02_UML_Design_Package.md) | **UML Architecture and Design Package** | Complete Mermaid diagrams: **Use Case Diagram**, **Domain Class Diagram**, **Sequence Diagram** (Check availability and book a stay with 15-minute lock), **Activity Diagram**, **Booking State Machine Diagram**; In-depth architectural justification for **loose coupling** (Calendar vs Payments via temporary hold tokens) and **high module cohesion**. |
 | [`03_Project_Plan.md`](docs/03_Project_Plan.md) | **Project Plan and Schedule Management** | 4-level Work Breakdown Structure (WBS); **CPM Network Diagram** with Early/Late start/finish and Float calculations; **Critical Path Analysis** (A -> B -> C -> D -> F -> I -> K -> M -> N = 78 days); **16-Week Master Mermaid Gantt Chart**; Resource loading across 3 Devs and 3 Field Staff. |
