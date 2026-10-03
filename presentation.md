@@ -28,8 +28,6 @@ Currently, there is no system. Everything happens informally over **phone calls 
 
 ## 2. Given Project Data
 
-*(Use these exact figures mandated in the project brief)*
-
 * **Total Homestays to Onboard:** `260 homestays`
 * **Onboarding & Listing Setup Effort:** `2.5 person-hours` per homestay (visiting in person, capturing verified photos, recording amenities, checking license).
 * **Field Onboarding Team:** `3 field staff`, working `5 productive hours/day` each.
@@ -65,7 +63,7 @@ Currently, there is no system. Everything happens informally over **phone calls 
 
 ---
 
-## 4. MAIN FOCUS: The Software Requirements Specification (SRS)
+## 4. Software Requirements Specification (SRS)
 
 
 ```mermaid
@@ -131,7 +129,7 @@ To ensure the system launches before summer, features are strictly categorized:
 
 ---
 
-## 5. SUMMARY OF OTHER PROJECT DELIVERABLES (Quick Reference / "If Asked")
+## 5. Architecture, Quality & Project Control
 
 
 ### 5.1 Architecture & UML Design
