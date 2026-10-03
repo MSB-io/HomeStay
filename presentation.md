@@ -67,8 +67,6 @@ Currently, there is no system. Everything happens informally over **phone calls 
 
 ## 4. MAIN FOCUS: The Software Requirements Specification (SRS)
 
-> **Presenter Speaking Tip:**  
-> *"Now let's examine the heart of the system: the SRS. We designed this system by keeping the hill environment at the center of every architectural decision. We divided our requirements into 10 clear functional capabilities and 6 strictly measurable non-functional rules."*
 
 ```mermaid
 graph TD
@@ -89,7 +87,7 @@ graph TD
 
 ---
 
-### 4.1 The 10 Functional Requirements (FRs) — In Plain English
+### 4.1 The 10 Functional Requirements (FRs)
 
 | Req ID | Feature Title | What It Does (In Layman Terms) | Why It Matters in the Hills | MoSCoW |
 | :---: | :--- | :--- | :--- | :---: |
@@ -108,8 +106,6 @@ graph TD
 
 ### 4.2 The 6 Measurable Non-Functional Requirements (NFRs)
 
-> **Key Rule of Software Engineering:**  
-> Never write vague requirements like *"the app should be fast"* or *"user friendly"*. A requirement is only valid if an engineer can test it with a stopwatch, network meter, or automated tool.
 
 | NFR ID | Category | The Plain-English Meaning | Exact Measurable Target | How We Test It |
 | :---: | :--- | :--- | :--- | :--- |
@@ -137,8 +133,6 @@ To ensure the system launches before summer, features are strictly categorized:
 
 ## 5. SUMMARY OF OTHER PROJECT DELIVERABLES (Quick Reference / "If Asked")
 
-> **Presenter Note:**  
-> Use these concise summaries if an evaluator asks questions about architecture, schedule, estimation, testing, or risk management.
 
 ### 5.1 Architecture & UML Design
 * **How Availability and Payments are Kept Loosely Coupled:**  
@@ -181,9 +175,3 @@ To ensure the system launches before summer, features are strictly categorized:
   1. *Weak 2G Internet:* Offline-first PWA with local IndexedDB cache + SMS fallback.
   2. *Overbooking Collisions:* Redis distributed lock (15-min TTL) + one-tap walk-in block.
   3. *Low Owner Smartphone Literacy:* High-contrast color-coded UI (Green = Free, Red = Booked) + in-person field staff training.
-
----
-
-## 6. Concluding Pitch (30-Second Closing)
-
-> *"In summary, Case Study 103 is not just about writing code; it is about solving real operational constraints in the hills of Uttarakhand. By recognizing that mountain connectivity is weak, owners need simplicity, and summer is only 16 weeks away, we designed an SRS with measurable NFRs, decoupled our architecture, overlapped field onboarding with software development, and implemented rigorous EVM control to guarantee a successful, on-time launch."*
